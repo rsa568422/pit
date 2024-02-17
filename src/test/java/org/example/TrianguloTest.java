@@ -11,7 +11,7 @@ import static org.junit.Assert.assertTrue;
 public class TrianguloTest {
 
     @Test
-    public void testEsEscaleno() {
+    public void testEsEscaleno1() {
         Triangulo triangulo = new Triangulo(2, 3, 4);
         assertTrue(triangulo.esEscaleno());
         assertFalse(triangulo.esIsosceles());
@@ -19,7 +19,47 @@ public class TrianguloTest {
     }
 
     @Test
-    public void testEsIsosceles() {
+    public void testEsEscaleno2() {
+        Triangulo triangulo = new Triangulo(2, 4, 3);
+        assertTrue(triangulo.esEscaleno());
+        assertFalse(triangulo.esIsosceles());
+        assertFalse(triangulo.esEquilatero());
+    }
+
+    @Test
+    public void testEsEscaleno3() {
+        Triangulo triangulo = new Triangulo(3, 2, 4);
+        assertTrue(triangulo.esEscaleno());
+        assertFalse(triangulo.esIsosceles());
+        assertFalse(triangulo.esEquilatero());
+    }
+
+    @Test
+    public void testEsEscaleno4() {
+        Triangulo triangulo = new Triangulo(3, 4, 2);
+        assertTrue(triangulo.esEscaleno());
+        assertFalse(triangulo.esIsosceles());
+        assertFalse(triangulo.esEquilatero());
+    }
+
+    @Test
+    public void testEsEscaleno5() {
+        Triangulo triangulo = new Triangulo(4, 2, 3);
+        assertTrue(triangulo.esEscaleno());
+        assertFalse(triangulo.esIsosceles());
+        assertFalse(triangulo.esEquilatero());
+    }
+
+    @Test
+    public void testEsEscaleno6() {
+        Triangulo triangulo = new Triangulo(4, 3, 2);
+        assertTrue(triangulo.esEscaleno());
+        assertFalse(triangulo.esIsosceles());
+        assertFalse(triangulo.esEquilatero());
+    }
+
+    @Test
+    public void testEsIsosceles1() {
         Triangulo triangulo = new Triangulo(2, 2, 3);
         assertFalse(triangulo.esEscaleno());
         assertTrue(triangulo.esIsosceles());
@@ -27,10 +67,27 @@ public class TrianguloTest {
     }
 
     @Test
+    public void testEsIsosceles2() {
+        Triangulo triangulo = new Triangulo(2, 3, 2);
+        assertFalse(triangulo.esEscaleno());
+        assertTrue(triangulo.esIsosceles());
+        assertFalse(triangulo.esEquilatero());
+    }
+
+    @Test
+    public void testEsIsosceles3() {
+        Triangulo triangulo = new Triangulo(3, 2, 2);
+        assertFalse(triangulo.esEscaleno());
+        assertTrue(triangulo.esIsosceles());
+        assertFalse(triangulo.esEquilatero());
+    }
+
+    @Test
     public void testEsEquilatero() {
-        assertFalse(new Triangulo(1, 1, 1).esEscaleno());
-        assertFalse(new Triangulo(1, 1, 1).esIsosceles());
-        assertTrue(new Triangulo(1, 1, 1).esEquilatero());
+        Triangulo triangulo = new Triangulo(1, 1, 1);
+        assertFalse(triangulo.esEscaleno());
+        assertFalse(triangulo.esIsosceles());
+        assertTrue(triangulo.esEquilatero());
     }
 
     @Test
@@ -54,11 +111,8 @@ public class TrianguloTest {
         Triangulo escaleno = Triangulo.creaTriangulo("2 3 4");
         Triangulo isosceles = Triangulo.creaTriangulo("2 2 3");
         Triangulo equilatero = Triangulo.creaTriangulo("1 1 1");
-        assertEquals(TipoDeTriangulo.escaleno, escaleno.tipo());
         assertEquals("T[2, 3, 4]", escaleno.toString());
-        assertEquals(TipoDeTriangulo.isosceles, isosceles.tipo());
         assertEquals("T[2, 2, 3]", isosceles.toString());
-        assertEquals(TipoDeTriangulo.equilatero, equilatero.tipo());
         assertEquals("T[1, 1, 1]", equilatero.toString());
     }
 
@@ -78,9 +132,18 @@ public class TrianguloTest {
 
     @Test
     public void testTestEquals() {
-        assertEquals(new Triangulo(2, 3, 4), Triangulo.creaTriangulo("2 3 4"));
-        assertEquals(new Triangulo(2, 2, 3), Triangulo.creaTriangulo("2 2 3"));
-        assertEquals(new Triangulo(1, 1, 1), Triangulo.creaTriangulo("1 1 1"));
+        Triangulo escaleno = new Triangulo(2, 3, 4);
+        Triangulo isosceles = new Triangulo(2, 2, 3);
+        Triangulo equilatero = new Triangulo(1, 1, 1);
+        assertEquals(escaleno, Triangulo.creaTriangulo("2 3 4"));
+        assertNotEquals(escaleno, Triangulo.creaTriangulo("2 2 3"));
+        assertNotEquals(escaleno, Triangulo.creaTriangulo("1 1 1"));
+        assertNotEquals(isosceles, Triangulo.creaTriangulo("2 3 4"));
+        assertEquals(isosceles, Triangulo.creaTriangulo("2 2 3"));
+        assertNotEquals(isosceles, Triangulo.creaTriangulo("1 1 1"));
+        assertNotEquals(equilatero, Triangulo.creaTriangulo("2 3 4"));
+        assertNotEquals(equilatero, Triangulo.creaTriangulo("2 2 3"));
+        assertEquals(equilatero, Triangulo.creaTriangulo("1 1 1"));
     }
 
     @Test
