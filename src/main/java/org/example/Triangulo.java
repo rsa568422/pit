@@ -60,7 +60,7 @@ public class Triangulo {
 			}
 			
 		} else {
-			throw new TrianguloException("Uno o m�s lados menores o iguales que 0");
+			throw new TrianguloException("Uno o más lados menores o iguales que 0");
 		}
 	}
 	
@@ -97,7 +97,7 @@ public class Triangulo {
 					throw new TrianguloException("Argumento invalido");
 				}
 			} else {
-				throw new TrianguloException("N�mero de argumentos invalido");
+				throw new TrianguloException("Número de argumentos invalido");
 			}
 		}
 		return new Triangulo(v[0], v[1], v[2]);
