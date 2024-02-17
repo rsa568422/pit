@@ -100,6 +100,9 @@ public class Triangulo {
 				throw new TrianguloException("Número de argumentos invalido");
 			}
 		}
+		if (argc < 3) {
+			throw new TrianguloException("Número de argumentos invalido");
+		}
 		return new Triangulo(v[0], v[1], v[2]);
 	}
 	
