@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Triangulo {
@@ -11,49 +12,17 @@ public class Triangulo {
 	public Triangulo(int p, int q, int r) {
 		if (p > 0 && q > 0 && r > 0) {
 			if (chk_lados(p, q, r)) {
-				int a, b, c;
-				if (p < q) {
-					if (p < r) {
-						a = p;
-						if (q < r) { // <--------------------- T[p, q, r]
-							b = q;
-							c = r;
-						} else { // <------------------------- T[p, r, q]
-							b = r;
-							c = q;
-						}
-					} else { // <----------------------------- T[r, p, q]
-						a = r;
-						b = p;
-						c = q;
-					}
-				} else {
-					if (p < r) { // <------------------------- T[q, p, r]
-						a = q;
-						b = p;
-						c = r;
-					} else {
-						c = p;
-						if (q < r) { // <--------------------- T[q, r, p]
-							a = q;
-							b = r;
-						} else { // <------------------------- T[r, q, p]
-							a = r;
-							b = q;
-						}
-					}
-				}
-				this.p = a;
-				this.q = b;
-				this.r = c;
+				int[] values = {p, q, r};
+				Arrays.sort(values);
+				this.p = values[0];
+				this.q = values[1];
+				this.r = values[2];
 				if (this.esEquilatero()) {
 					tipo = TipoDeTriangulo.equilatero;
 				} else if (this.esEscaleno()) {
 					tipo = TipoDeTriangulo.escaleno;
-				} else if (this.esIsosceles()) {
-					tipo = TipoDeTriangulo.isosceles;
 				} else {
-					throw new TrianguloException("Tipo de triangulo desconocido");
+					tipo = TipoDeTriangulo.isosceles;
 				}
 			} else {
 				throw new TrianguloException("Un lado mayor o igual que la suma de los otros dos");
@@ -114,7 +83,7 @@ public class Triangulo {
 	
 	@Override
 	public boolean equals(Object obj) {
-		return this.toString().equals(obj.toString());
+		return obj instanceof Triangulo && this.toString().equals(obj.toString());
 	}
 	/* --------------------------------------------------------------------------------------------------------- */
 }
