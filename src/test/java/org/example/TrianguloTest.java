@@ -1,12 +1,13 @@
 package org.example;
 
-import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TrianguloTest {
 
@@ -148,196 +149,118 @@ public class TrianguloTest {
 
     @Test
     public void testError1() {
-        Exception exception = null;
-
-        try {
-            Triangulo.creaTriangulo("1 1 2");
-        } catch (Exception e) {
-            exception = e;
-        }
-
-        assertNotNull(exception);
-        assertTrue(exception instanceof TrianguloException);
+        TrianguloException exception = assertThrows(
+                TrianguloException.class,
+                () -> Triangulo.creaTriangulo("1 1 2")
+        );
         assertEquals("Un lado mayor o igual que la suma de los otros dos", exception.getMessage());
     }
 
     @Test
     public void testError2() {
-        Exception exception = null;
-
-        try {
-            Triangulo.creaTriangulo("1 2 1");
-        } catch (Exception e) {
-            exception = e;
-        }
-
-        assertNotNull(exception);
-        assertTrue(exception instanceof TrianguloException);
+        TrianguloException exception = assertThrows(
+                TrianguloException.class,
+                () -> Triangulo.creaTriangulo("1 2 1")
+        );
         assertEquals("Un lado mayor o igual que la suma de los otros dos", exception.getMessage());
     }
 
     @Test
     public void testError3() {
-        Exception exception = null;
-
-        try {
-            Triangulo.creaTriangulo("2 1 1");
-        } catch (Exception e) {
-            exception = e;
-        }
-
-        assertNotNull(exception);
-        assertTrue(exception instanceof TrianguloException);
+        TrianguloException exception = assertThrows(
+                TrianguloException.class,
+                () -> Triangulo.creaTriangulo("2 1 1")
+        );
         assertEquals("Un lado mayor o igual que la suma de los otros dos", exception.getMessage());
     }
 
     @Test
     public void testError4() {
-        Exception exception = null;
-
-        try {
-            Triangulo.creaTriangulo("1 1 0");
-        } catch (Exception e) {
-            exception = e;
-        }
-
-        assertNotNull(exception);
-        assertTrue(exception instanceof TrianguloException);
+        TrianguloException exception = assertThrows(
+                TrianguloException.class,
+                () -> Triangulo.creaTriangulo("1 1 0")
+        );
         assertEquals("Uno o más lados menores o iguales que 0", exception.getMessage());
     }
 
     @Test
     public void testError5() {
-        Exception exception = null;
-
-        try {
-            Triangulo.creaTriangulo("1 0 1");
-        } catch (Exception e) {
-            exception = e;
-        }
-
-        assertNotNull(exception);
-        assertTrue(exception instanceof TrianguloException);
+        TrianguloException exception = assertThrows(
+                TrianguloException.class,
+                () -> Triangulo.creaTriangulo("1 0 1")
+        );
         assertEquals("Uno o más lados menores o iguales que 0", exception.getMessage());
     }
 
     @Test
     public void testError6() {
-        Exception exception = null;
-
-        try {
-            Triangulo.creaTriangulo("0 1 1");
-        } catch (Exception e) {
-            exception = e;
-        }
-
-        assertNotNull(exception);
-        assertTrue(exception instanceof TrianguloException);
+        TrianguloException exception = assertThrows(
+                TrianguloException.class,
+                () -> Triangulo.creaTriangulo("0 1 1")
+        );
         assertEquals("Uno o más lados menores o iguales que 0", exception.getMessage());
     }
 
     @Test
     public void testError7() {
-        Exception exception = null;
-
-        try {
-            Triangulo.creaTriangulo("1 0 0");
-        } catch (Exception e) {
-            exception = e;
-        }
-
-        assertNotNull(exception);
-        assertTrue(exception instanceof TrianguloException);
+        TrianguloException exception = assertThrows(
+                TrianguloException.class,
+                () -> Triangulo.creaTriangulo("1 0 0")
+        );
         assertEquals("Uno o más lados menores o iguales que 0", exception.getMessage());
     }
 
     @Test
     public void testError8() {
-        Exception exception = null;
-
-        try {
-            Triangulo.creaTriangulo("0 1 0");
-        } catch (Exception e) {
-            exception = e;
-        }
-
-        assertNotNull(exception);
-        assertTrue(exception instanceof TrianguloException);
+        TrianguloException exception = assertThrows(
+                TrianguloException.class,
+                () -> Triangulo.creaTriangulo("0 1 0")
+        );
         assertEquals("Uno o más lados menores o iguales que 0", exception.getMessage());
     }
 
     @Test
     public void testError9() {
-        Exception exception = null;
-
-        try {
-            Triangulo.creaTriangulo("0 0 1");
-        } catch (Exception e) {
-            exception = e;
-        }
-
-        assertNotNull(exception);
-        assertTrue(exception instanceof TrianguloException);
+        TrianguloException exception = assertThrows(
+                TrianguloException.class,
+                () -> Triangulo.creaTriangulo("0 0 1")
+        );
         assertEquals("Uno o más lados menores o iguales que 0", exception.getMessage());
     }
 
     @Test
     public void testError10() {
-        Exception exception = null;
-
-        try {
-            Triangulo.creaTriangulo("0 0 0");
-        } catch (Exception e) {
-            exception = e;
-        }
-
-        assertNotNull(exception);
-        assertTrue(exception instanceof TrianguloException);
+        TrianguloException exception = assertThrows(
+                TrianguloException.class,
+                () -> Triangulo.creaTriangulo("0 0 0")
+        );
         assertEquals("Uno o más lados menores o iguales que 0", exception.getMessage());
     }
 
     @Test
     public void testError11() {
-        Exception exception = null;
-
-        try {
-            Triangulo.creaTriangulo("1 1 c");
-        } catch (Exception e) {
-            exception = e;
-        }
-
-        assertNotNull(exception);
-        assertTrue(exception instanceof TrianguloException);
+        TrianguloException exception = assertThrows(
+                TrianguloException.class,
+                () -> Triangulo.creaTriangulo("1 1 c")
+        );
         assertEquals("Argumento invalido", exception.getMessage());
     }
 
     @Test
     public void testError12() {
-        Exception exception = null;
-
-        try {
-            Triangulo.creaTriangulo("1 1");
-        } catch (Exception e) {
-            exception = e;
-        }
-
-        assertNotNull(exception);
-        assertTrue(exception instanceof TrianguloException);
+        TrianguloException exception = assertThrows(
+                TrianguloException.class,
+                () -> Triangulo.creaTriangulo("1 1")
+        );
         assertEquals("Número de argumentos invalido", exception.getMessage());
     }
 
     @Test
     public void testError13() {
-        Exception exception = null;
-
-        try {
-            Triangulo.creaTriangulo("1 1 1 1");
-        } catch (Exception e) {
-            exception = e;
-        }
-
-        assertNotNull(exception);
-        assertTrue(exception instanceof TrianguloException);
+        TrianguloException exception = assertThrows(
+                TrianguloException.class,
+                () -> Triangulo.creaTriangulo("1 1 1 1")
+        );
         assertEquals("Número de argumentos invalido", exception.getMessage());
     }
 }
